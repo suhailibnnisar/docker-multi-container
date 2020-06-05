@@ -18,3 +18,15 @@ after_success:
   - docker push suhailibnnisar/multi-nginx
   - docker push suhailibnnisar/multi-server
   - docker push suhailibnnisar/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: multi-docker
+  env: LearningDocker-env
+  bucket_name: elasticbeanstalk-ap-south-1-571149291614
+  bucket_path: multi-docker
+  access_key_id: $AWS_ACCESS
+  secret_access_key: $AWS_SECRET
+  on:
+    branch: master
